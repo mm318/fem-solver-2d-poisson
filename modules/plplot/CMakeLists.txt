@@ -1,0 +1,105 @@
+cmake_minimum_required(VERSION 3.0.0)
+
+set(PROJECT_NAME
+    plplot_Library
+)
+set(LIBRARY_NAME
+    plplot
+)
+set(LIBRARY_HEADERS_DIR
+    .
+)
+set(LIBRARY_HEADERS
+    ${LIBRARY_HEADERS_DIR}/csa/nan.h
+    ${LIBRARY_HEADERS_DIR}/fonts/plhershey-unicode.h
+    ${LIBRARY_HEADERS_DIR}/include/config.h
+    ${LIBRARY_HEADERS_DIR}/include/dirent_msvc.h
+    ${LIBRARY_HEADERS_DIR}/include/disptab.h
+    ${LIBRARY_HEADERS_DIR}/include/drivers.h
+    ${LIBRARY_HEADERS_DIR}/include/gcw.h
+    ${LIBRARY_HEADERS_DIR}/include/ltdl_win32.h
+    ${LIBRARY_HEADERS_DIR}/include/metadefs.h
+    ${LIBRARY_HEADERS_DIR}/include/pdf.h
+    ${LIBRARY_HEADERS_DIR}/include/plConfig.h
+    ${LIBRARY_HEADERS_DIR}/include/plcore.h
+    ${LIBRARY_HEADERS_DIR}/include/pldebug.h
+    ${LIBRARY_HEADERS_DIR}/include/plDevs.h
+    ${LIBRARY_HEADERS_DIR}/include/pldll.h
+    ${LIBRARY_HEADERS_DIR}/include/plevent.h
+    ${LIBRARY_HEADERS_DIR}/include/plfci-truetype.h
+    ${LIBRARY_HEADERS_DIR}/include/plfci-type1.h
+    ${LIBRARY_HEADERS_DIR}/include/plfreetype.h
+    ${LIBRARY_HEADERS_DIR}/include/plplot.h
+    ${LIBRARY_HEADERS_DIR}/include/plplotcanvas-hacktext.h
+    ${LIBRARY_HEADERS_DIR}/include/plplotcanvas.h
+    ${LIBRARY_HEADERS_DIR}/include/plplotP.h
+    ${LIBRARY_HEADERS_DIR}/include/plstrm.h
+    ${LIBRARY_HEADERS_DIR}/include/plunicode-type1.h
+    ${LIBRARY_HEADERS_DIR}/include/plxwd.h
+    ${LIBRARY_HEADERS_DIR}/include/ps.h
+    ${LIBRARY_HEADERS_DIR}/include/qt.h
+    ${LIBRARY_HEADERS_DIR}/qsastime/qsastime.h
+    ${LIBRARY_HEADERS_DIR}/qsastime/qsastimedll.h
+    ${LIBRARY_HEADERS_DIR}/qsastime/qsastimeP.h
+    ${LIBRARY_HEADERS_DIR}/qsastime/tai-utc.h
+    ${LIBRARY_HEADERS_DIR}/src/mt19937ar.h
+)
+set(LIBRARY_SOURCE_DIR
+    .
+)
+set(LIBRARY_SOURCE
+    ${LIBRARY_SOURCE_DIR}/drivers/gd.c
+    ${LIBRARY_SOURCE_DIR}/qsastime/qsastime.c
+    ${LIBRARY_SOURCE_DIR}/src/mt19937ar.c
+    ${LIBRARY_SOURCE_DIR}/src/pdfutils.c
+    ${LIBRARY_SOURCE_DIR}/src/plaffine.c
+    ${LIBRARY_SOURCE_DIR}/src/plarc.c
+    ${LIBRARY_SOURCE_DIR}/src/plargs.c
+    ${LIBRARY_SOURCE_DIR}/src/plbox.c
+    ${LIBRARY_SOURCE_DIR}/src/plbuf.c
+    ${LIBRARY_SOURCE_DIR}/src/plcont.c
+    ${LIBRARY_SOURCE_DIR}/src/plcore.c
+    ${LIBRARY_SOURCE_DIR}/src/plctrl.c
+    ${LIBRARY_SOURCE_DIR}/src/plcvt.c
+    ${LIBRARY_SOURCE_DIR}/src/pldeprecated.c
+    ${LIBRARY_SOURCE_DIR}/src/pldtik.c
+    ${LIBRARY_SOURCE_DIR}/src/plf2ops.c
+    ${LIBRARY_SOURCE_DIR}/src/plfill.c
+    ${LIBRARY_SOURCE_DIR}/src/plfreetype.c
+    ${LIBRARY_SOURCE_DIR}/src/plgradient.c
+    ${LIBRARY_SOURCE_DIR}/src/plgridd.c
+    ${LIBRARY_SOURCE_DIR}/src/plhist.c
+    ${LIBRARY_SOURCE_DIR}/src/plimage.c
+    ${LIBRARY_SOURCE_DIR}/src/pllegend.c
+    ${LIBRARY_SOURCE_DIR}/src/plline.c
+    ${LIBRARY_SOURCE_DIR}/src/plmap.c
+    ${LIBRARY_SOURCE_DIR}/src/plot3d.c
+    ${LIBRARY_SOURCE_DIR}/src/plpage.c
+    ${LIBRARY_SOURCE_DIR}/src/plsdef.c
+    ${LIBRARY_SOURCE_DIR}/src/plshade.c
+    ${LIBRARY_SOURCE_DIR}/src/plstdio.c
+    ${LIBRARY_SOURCE_DIR}/src/plstripc.c
+    ${LIBRARY_SOURCE_DIR}/src/plsym.c
+    ${LIBRARY_SOURCE_DIR}/src/pltick.c
+    ${LIBRARY_SOURCE_DIR}/src/pltime.c
+    ${LIBRARY_SOURCE_DIR}/src/plvect.c
+    ${LIBRARY_SOURCE_DIR}/src/plvpor.c
+    ${LIBRARY_SOURCE_DIR}/src/plwind.c
+)
+
+project(${PROJECT_NAME})
+
+add_library(${LIBRARY_NAME} STATIC
+    ${LIBRARY_HEADERS}
+    ${LIBRARY_SOURCE}
+)
+
+target_include_directories(${LIBRARY_NAME} PRIVATE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${LIBRARY_HEADERS_DIR}>
+    $<INSTALL_INTERFACE:${LIBRARY_HEADERS_DIR}>
+)
+
+target_include_directories(${LIBRARY_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
+    $<INSTALL_INTERFACE:..>
+)
