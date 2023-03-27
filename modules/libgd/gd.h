@@ -25,8 +25,6 @@ extern "C" {
     	wish to build gd as a static library or by directly including
     	the gd sources in a project. */
 
-#define BGDWIN32 1
-
 #if !defined(WIN32) && !defined(_WIN32_WCE)
     #define NONDLL 1
 #endif /* WIN32 */

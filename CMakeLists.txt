@@ -14,14 +14,13 @@ set(FEM_SOLVER_LIBS_DIR
 )
 set(FEM_SOLVER_LIBS 
     fem
-    libgd
-    libpng
-    libpng_main
-    plplot
     plplot_main
-    triangle
+    plplot
     triangle_main
-
+    triangle
+    libgd
+    libpng_main
+    libpng
     zlib
 )
 
@@ -43,4 +42,4 @@ set_target_properties(${FEM_SOLVER_PROJECT_NAME} ${FEM_SOLVER_LIBS}
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
-target_link_libraries(${FEM_SOLVER_PROJECT_NAME} ${FEM_SOLVER_LIBS})
+target_link_libraries(${FEM_SOLVER_PROJECT_NAME} ${FEM_SOLVER_LIBS} m)

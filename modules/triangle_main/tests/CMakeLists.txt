@@ -23,6 +23,7 @@ set_target_properties(${TEST_PROJECT_NAME}
 target_link_libraries(${TEST_PROJECT_NAME}
     triangle
     ${LIBRARY_NAME} # NOTE: This is defined from project above
+    m
 )
 
 add_test(${TEST_PROJECT_NAME} ${TEST_PROJECT_NAME})

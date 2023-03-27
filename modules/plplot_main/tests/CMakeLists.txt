@@ -25,6 +25,7 @@ target_link_libraries(${TEST_PROJECT_NAME}
     libgd
     libpng
     zlib
+    m
     ${LIBRARY_NAME} # NOTE: This is defined from project above
 )
 

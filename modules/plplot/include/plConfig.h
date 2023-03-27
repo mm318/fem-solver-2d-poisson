@@ -80,7 +80,7 @@
 #define PL_HAVE_STDINT_H 1
 
 // Define to 1 if you have the <unistd.h> header file.
-#undef PL_HAVE_UNISTD_H
+#define PL_HAVE_UNISTD_H 1
 
 // Define if usleep is available
 #define PL_HAVE_USLEEP
