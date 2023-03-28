@@ -1,0 +1,50 @@
+name: "Build and Test"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 */24 * * *'
+
+jobs:
+  build_and_test:
+    strategy:
+      fail-fast: false
+      matrix:
+        config: 
+        - {
+            os: ubuntu-20.04
+          }
+        - {
+            os: ubuntu-22.04
+          }
+    name: Build & Test on ${{matrix.config.os}}
+    runs-on: ${{matrix.config.os}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install cmake
+        run: |
+          apt update
+          apt install -y cmake
+      - name: Create Build Directory
+        run: cmake -E make_directory ${{github.workspace}}/build
+      - name: Run cmake
+        run: cmake -S ${{github.workspace}}/ -B ${{github.workspace}}/build
+      - name: Run build
+        run: cmake --build ${{github.workspace}}/build -j4 --config Release
+      - name: Run tests
+        working-directory: ${{github.workspace}}/build/bin
+        run: |
+          ./tests/triangle_main_Tests
+          ./tests/plplot_main_Tests
+      - name: Run application
+        working-directory: ${{github.workspace}}/build/bin
+        run: |
+          ./FEM_Solver square
+          ./FEM_Solver box
+          ./FEM_Solver bicycle_seat
+          ./FEM_Solver square_circle_hole
+          ./FEM_Solver double_hex
+          ./FEM_Solver face

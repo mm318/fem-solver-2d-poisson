@@ -38,7 +38,7 @@ cd bin  # current working directory needs to have the plstnd5.fnt and plxtnd5.fn
 
 ## Requirements
 
-Tested on Ubuntu 20.04.
+Tested on Ubuntu 20.04 and Ubuntu 22.04.
 
 ## Dependencies
 
