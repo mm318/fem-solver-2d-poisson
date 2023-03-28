@@ -14,10 +14,10 @@ set(FEM_SOLVER_LIBS_DIR
 )
 set(FEM_SOLVER_LIBS 
     fem
-    plplot_main
-    plplot
     triangle_main
     triangle
+    plplot_main
+    plplot
     libgd
     libpng_main
     libpng
@@ -43,3 +43,5 @@ set_target_properties(${FEM_SOLVER_PROJECT_NAME} ${FEM_SOLVER_LIBS}
 )
 
 target_link_libraries(${FEM_SOLVER_PROJECT_NAME} ${FEM_SOLVER_LIBS} m)
+
+file(COPY bin/ DESTINATION bin/)
