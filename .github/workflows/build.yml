@@ -4,36 +4,35 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: '0 */24 * * *'
+
+env:
+  BUILD_TYPE: Release
 
 jobs:
   build_and_test:
     strategy:
       fail-fast: false
       matrix:
-        config: 
-        - {
-            os: ubuntu-20.04
-          }
-        - {
-            os: ubuntu-22.04
-          }
-    name: Build & Test on ${{matrix.config.os}}
-    runs-on: ${{matrix.config.os}}
+        os:
+          - ubuntu-20.04
+          - ubuntu-22.04
+    name: Build & Test on ${{matrix.os}}
+    runs-on: ${{matrix.os}}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install cmake
         run: |
-          apt update
-          apt install -y cmake
-      - name: Create Build Directory
-        run: cmake -E make_directory ${{github.workspace}}/build
+          sudo apt update
+          sudo apt install -y cmake
       - name: Run cmake
-        run: cmake -S ${{github.workspace}}/ -B ${{github.workspace}}/build
+        run: |
+          cmake -S ${{github.workspace}}/ -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       - name: Run build
-        run: cmake --build ${{github.workspace}}/build -j4 --config Release
+        run: |
+          cmake --build ${{github.workspace}}/build -j4 --config ${{env.BUILD_TYPE}}
       - name: Run tests
         working-directory: ${{github.workspace}}/build/bin
         run: |
