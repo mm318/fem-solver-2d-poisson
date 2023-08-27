@@ -1,8 +1,22 @@
 # Finite Element Method Solver for 2D Poisson Problems
 
-This was for a university project in 2011.
-
 ![build](https://github.com/mm318/fem-solver-2d-poisson/actions/workflows/build.yml/badge.svg)
+
+This package takes a .poly file that defines the problem boundary
+(see [here](https://www.cs.cmu.edu/~quake/triangle.poly.html) to understand the file format)
+and solves the 2D screened Poisson equation:
+```math
+\Delta u(x,y) - u(x,y) = -f(x,y)
+```
+
+subject to the Dirichlet boundary condition:
+```math
+u(x,y) = {x^2 + y^2 \over 250000}
+```
+
+(The problem can be modified by editing `prob_def.c`)
+
+This was for a university project in 2011.
 
 
 ## Usage
@@ -27,7 +41,6 @@ Usage:
 ```text
 FEM_Solver <.poly file>
 ```
-See [here](https://www.cs.cmu.edu/~quake/triangle.poly.html) to understand the .poly file format.
 
 Example:
 ```bash
@@ -35,6 +48,14 @@ Example:
 cd bin  # current working directory needs to have the plstnd5.fnt and plxtnd5.fnt files
 ./FEM_Solver bicycle_seat # exclude the .poly extension
 ```
+
+Resulting mesh:  
+![bicycle_seat mesh](bin/bicycle_seat_example_mesh.png "bicycle_seat mesh")
+
+Resulting solution:  
+![bicycle_seat solution](bin/bicycle_seat_example.png "bicycle_seat solution")  
+![bicycle_seat solution plot](bin/bicycle_seat_example_plot.png "bicycle_seat solution plot")
+
 
 ## Requirements
 
