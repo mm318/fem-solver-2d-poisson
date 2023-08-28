@@ -6,7 +6,7 @@ This package takes a .poly file that defines the problem boundary
 (see [here](https://www.cs.cmu.edu/~quake/triangle.poly.html) to understand the file format)
 and solves the 2D screened Poisson equation:
 ```math
-\Delta u(x,y) - u(x,y) = -f(x,y)
+\Delta u(x,y) - u(x,y) = -{x^2 + y^2 - 4 \over 250000}
 ```
 
 subject to the Dirichlet boundary condition:
