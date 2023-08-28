@@ -13,7 +13,7 @@ project(${FEM_SOLVER_PROJECT_NAME})
 include(ExternalProject)
 
 ExternalProject_Add(zlib
-    SOURCE_DIR "${CMAKE_SOURCE_DIR}/external_libs/zlib"
+    URL "${CMAKE_SOURCE_DIR}/external_libs/zlib.tar.bz2"
     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}"
 )
 
@@ -24,19 +24,19 @@ ExternalProject_Add(triangle
 
 ExternalProject_Add(libpng
     DEPENDS zlib
-    SOURCE_DIR "${CMAKE_SOURCE_DIR}/external_libs/libpng"
+    URL "${CMAKE_SOURCE_DIR}/external_libs/libpng.tar.bz2"
     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}"
 )
 
 ExternalProject_Add(libgd
     DEPENDS libpng
-    SOURCE_DIR "${CMAKE_SOURCE_DIR}/external_libs/libgd"
+    URL "${CMAKE_SOURCE_DIR}/external_libs/libgd.tar.bz2"
     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}"
 )
 
 ExternalProject_Add(plplot
     DEPENDS libgd
-    SOURCE_DIR "${CMAKE_SOURCE_DIR}/external_libs/plplot"
+    URL "${CMAKE_SOURCE_DIR}/external_libs/plplot.tar.bz2"
     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}"
 )
 
