@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include "prob_def.h"
+#include "fem/prob_def.h"
 
 
 #ifndef LAPLACE_EQUATION
@@ -32,7 +32,7 @@ void k_coef(int node_num, double *node_xy, double *node_k)
     int i;
 
     for(i=0; i<node_num; i++) {
-        node_k[i] = 1.0;
+        node_k[i] = 0.0;
     }
 }
 
@@ -45,7 +45,7 @@ void rhs(int node_num, double *node_xy, double *node_rhs)
         x = node_xy[2*i];
         y = node_xy[2*i+1];
 
-        node_rhs[i] = (x*x + y*y - 4.0)/(500.0*500.0);
+        node_rhs[i] = 5.0;
     }
 }
 

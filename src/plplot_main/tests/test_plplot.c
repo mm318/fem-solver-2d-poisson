@@ -9,7 +9,7 @@
 #include <ctype.h>
 
 // #include "lib/plplot/include/plConfig.h"
-#include "plplot/include/plplot.h"
+#include "plplot/plplot.h"
 
 // define PI if not defined by math.h
 

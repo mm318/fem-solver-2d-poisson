@@ -23,7 +23,7 @@
 
 #include <math.h>
 
-#include "plplot/include/plplot.h"
+#include "plplot/plplot.h"
 
 
 #ifndef M_PI

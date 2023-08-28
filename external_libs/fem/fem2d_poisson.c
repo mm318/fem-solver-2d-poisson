@@ -8,7 +8,7 @@
 #include "dgb.h"
 
 // for debug functions
-#include "main/fem_solver.h"
+#include "fem_solver_debug.h"
 
 
 //****************************************************************************80

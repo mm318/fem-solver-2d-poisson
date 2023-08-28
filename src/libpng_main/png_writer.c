@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "./libpng/png.h"
+#include "libpng/png.h"
 #include "png_writer.h"
 
 
